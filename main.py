@@ -1,12 +1,20 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 from random import choice, randint
 
 tim = Turtle()
+colormode(255)
 # tim.shape("turtle")
 # tim.color("red")
 
-colors = ["royal blue", "deep sky blue", "turquoise", "aquamarine", "pale green", "dark khaki", "goldenrod", "dark red"]
+def random_color():
+    r = randint(0, 255)
+    g = randint(0, 255)
+    b = randint(0, 255)
 
+    return (r, g, b)
+
+colors = ["royal blue", "deep sky blue", "turquoise", "aquamarine", "pale green", "dark khaki", "goldenrod", "dark red"]
+directions = [0, 90, 180, 270]
 def draw_square():
     """Draw a square."""
     for _ in range(4):
@@ -31,7 +39,7 @@ def draw_shape(sides):
 def draw_shapes():
     """Draw shapes from triangle to decagon."""
     for side_n in range(3,11):
-        tim.color(choice(colors))
+        tim.color(random_color())
         draw_shape(side_n)
 
 def select_walk(walk, distance):
@@ -42,14 +50,13 @@ def select_walk(walk, distance):
 
 def draw_random_walk():
     """Generates a real random walk."""
-    distance = 90
+    tim.pensize(15)
     tim.speed(10)
 
-    for _ in range(100):
-        color = choice(colors)
-        tim.dot(10, color)
-        tim.pen(pencolor=color, pensize=10)
-        select_walk(randint(1, 4), distance)
+    for _ in range(200):
+        tim.color(random_color())
+        tim.forward(30)
+        tim.setheading(choice(directions))
 
 draw_random_walk()
 
