@@ -1,3 +1,4 @@
+import colorgram
 from turtle import Screen
 from random_walk import draw_random_walk
 from square import draw_square
@@ -7,10 +8,13 @@ from spirograph import draw_spirograph
 
 # draw_a_dashed_line()
 # draw_square()
-draw_shape(9)
+# draw_shape(9)
 # draw_shapes()
 # draw_spirograph()
 # draw_random_walk()
 
-screen = Screen()
-screen.exitonclick()
+colors = colorgram.extract('image.webp', 6)
+print(colors)
+
+# screen = Screen()
+# screen.exitonclick()
